@@ -11,6 +11,14 @@ function App() {
     setText("");
   };
 
+  const countText = (str: string): number => {
+    const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
+    const segments = segmenter.segment(str);
+    const strLength = [...segments].length;
+
+    return strLength;
+  };
+
   return (
     <>
       <textarea
@@ -19,8 +27,7 @@ function App() {
         value={text}
       ></textarea>
       <button onClick={handleClickButton}>リセット</button>
-      <div>文字数:{text.length}</div>
-      <></>
+      <div>文字数:{countText(text)}</div>
     </>
   );
 }
