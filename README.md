@@ -1,9 +1,9 @@
 # 文字数カウンタ
 
-# License
+## License
 
 MIT
 
-# Author
+## Author
 
 Yoshinori Takada
