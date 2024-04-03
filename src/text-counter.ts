@@ -1,6 +1,6 @@
 /**
  * 文字列の文字数を数える
- * @param str - 文字列
+ * @param str 文字列
  * @returns 文字列の文字数(書記素の数)
  */
 export const countText = (str: string): number => {
