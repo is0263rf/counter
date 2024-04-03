@@ -24,3 +24,15 @@ export const countLines = (str: string): number => {
   const result = str.split("\n").length;
   return result;
 };
+
+/**
+ * 空白文字を除外して文字列の文字数を数える
+ * @param str 文字列
+ * @returns 文字数
+ */
+export const countTextWithoutWhiteSpace = (str: string): number => {
+  const str2 = str.replace(/\s/g, "");
+  const result = countText(str2);
+
+  return result;
+};

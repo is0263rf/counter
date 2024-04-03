@@ -1,5 +1,9 @@
 import { useState, ChangeEvent } from "react";
-import { countText, countLines } from "./text-counter";
+import {
+  countText,
+  countLines,
+  countTextWithoutWhiteSpace,
+} from "./text-counter";
 
 function App() {
   const [text, setText] = useState("");
@@ -21,6 +25,7 @@ function App() {
       ></textarea>
       <button onClick={handleClickButton}>リセット</button>
       <div>文字数:{countText(text)}</div>
+      <div>空白文字を除く文字数:{countTextWithoutWhiteSpace(text)}</div>
       <div>行数:{countLines(text)}</div>
     </>
   );
