@@ -1,9 +1,6 @@
 import { useState, ChangeEvent } from "react";
-import {
-  countText,
-  countLines,
-  countTextWithoutWhiteSpace,
-} from "./text-counter";
+import { Button, Stack, TextField } from "@mui/material";
+import { CountResult } from "./components/CountResult";
 
 function App() {
   const [text, setText] = useState("");
@@ -18,15 +15,21 @@ function App() {
 
   return (
     <>
-      <textarea
-        placeholder="テキストを入力してください"
-        onChange={handleChangeTextArea}
-        value={text}
-      ></textarea>
-      <button onClick={handleClickButton}>リセット</button>
-      <div>文字数:{countText(text)}</div>
-      <div>空白文字を除く文字数:{countTextWithoutWhiteSpace(text)}</div>
-      <div>行数:{countLines(text)}</div>
+      <Stack spacing={2} alignItems={"center"} width={300} m={"auto"}>
+        <TextField
+          variant="outlined"
+          multiline={true}
+          minRows={3}
+          onChange={handleChangeTextArea}
+          value={text}
+          placeholder="テキストを入力してください"
+          fullWidth={true}
+        ></TextField>
+        <Button variant="contained" onClick={handleClickButton}>
+          リセット
+        </Button>
+        <CountResult text={text}></CountResult>
+      </Stack>
     </>
   );
 }
