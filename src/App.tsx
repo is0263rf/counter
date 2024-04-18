@@ -4,6 +4,7 @@ import {
   countLines,
   countTextWithoutWhiteSpace,
 } from "./text-counter";
+import { Button, Stack, TextField, Box } from "@mui/material";
 
 function App() {
   const [text, setText] = useState("");
@@ -18,15 +19,36 @@ function App() {
 
   return (
     <>
-      <textarea
-        placeholder="テキストを入力してください"
-        onChange={handleChangeTextArea}
-        value={text}
-      ></textarea>
-      <button onClick={handleClickButton}>リセット</button>
-      <div>文字数:{countText(text)}</div>
-      <div>空白文字を除く文字数:{countTextWithoutWhiteSpace(text)}</div>
-      <div>行数:{countLines(text)}</div>
+      <Stack spacing={2} alignItems={"center"} width={300} m={"auto"}>
+        <TextField
+          variant="outlined"
+          multiline={true}
+          minRows={3}
+          onChange={handleChangeTextArea}
+          value={text}
+          placeholder="テキストを入力してください"
+          fullWidth={true}
+        ></TextField>
+        <Button variant="contained" onClick={handleClickButton}>
+          リセット
+        </Button>
+        <Stack direction={"column"} spacing={1}>
+          <Stack direction={"row"} justifyContent={"space-between"}>
+            <Box width={200}>文字数</Box>
+            <Box>{countText(text)}</Box>
+          </Stack>
+
+          <Stack direction={"row"} justifyContent={"space-between"}>
+            <Box width={200}>空白文字を除く文字数</Box>
+            <Box>{countTextWithoutWhiteSpace(text)}</Box>
+          </Stack>
+
+          <Stack direction={"row"} justifyContent={"space-between"}>
+            <Box width={200}>行数</Box>
+            <Box>{countLines(text)}</Box>
+          </Stack>
+        </Stack>
+      </Stack>
     </>
   );
 }
