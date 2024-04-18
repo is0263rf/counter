@@ -1,10 +1,6 @@
 import { useState, ChangeEvent } from "react";
-import {
-  countText,
-  countLines,
-  countTextWithoutWhiteSpace,
-} from "./text-counter";
-import { Button, Stack, TextField, Box } from "@mui/material";
+import { Button, Stack, TextField } from "@mui/material";
+import { CountResult } from "./components/CountResult";
 
 function App() {
   const [text, setText] = useState("");
@@ -32,22 +28,7 @@ function App() {
         <Button variant="contained" onClick={handleClickButton}>
           リセット
         </Button>
-        <Stack direction={"column"} spacing={1}>
-          <Stack direction={"row"} justifyContent={"space-between"}>
-            <Box width={200}>文字数</Box>
-            <Box>{countText(text)}</Box>
-          </Stack>
-
-          <Stack direction={"row"} justifyContent={"space-between"}>
-            <Box width={200}>空白文字を除く文字数</Box>
-            <Box>{countTextWithoutWhiteSpace(text)}</Box>
-          </Stack>
-
-          <Stack direction={"row"} justifyContent={"space-between"}>
-            <Box width={200}>行数</Box>
-            <Box>{countLines(text)}</Box>
-          </Stack>
-        </Stack>
+        <CountResult text={text}></CountResult>
       </Stack>
     </>
   );
